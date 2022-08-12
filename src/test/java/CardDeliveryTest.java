@@ -18,12 +18,11 @@ public class CardDeliveryTest {
     @Test
     void shouldBeBookingDelivery() {
         Configuration.headless = true;
-
+        String date = LocalDate.now().plusDays(7).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         open("http://localhost:9999/");
-
         $("[data-test-id=city] input").setValue("Москва");
         $("[data-test-id=date] input").doubleClick().sendKeys(Keys.BACK_SPACE);
-        $("[data-test-id=date] input").setValue("17082022");
+        $("[data-test-id=date] input").setValue(date);
         $("[data-test-id=name] input").setValue("Печкин-Лавочкин Иван");
         $("[data-test-id=phone] input").setValue("+79998887766");
         $("[data-test-id=agreement]").click();
